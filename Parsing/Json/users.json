@@ -1,0 +1,22 @@
+{
+    "users": [
+      {
+        "name": "Santiago",
+        "type": "Programador",
+        "age": 24,
+        "social": {
+          "facebook": "https://facebook.com",
+          "twitter": "https://twitter.com"
+        }
+      },
+      {
+        "name": "Muriado",
+        "type": "Autor",
+        "age": 17,
+        "social": {
+          "facebook": "https://facebook.com",
+          "twitter": "https://twitter.com"
+        }
+      }
+    ]
+  }

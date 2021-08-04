@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+  <user type="Programmer">
+    <name>Santiago</name>
+    <social>
+      <facebook>https://facebook.com</facebook>
+      <twitter>https://twitter.com</twitter>
+      <youtube>https://youtube.com</youtube>
+    </social>
+  </user>
+  <user type="Author">
+    <name>Muriado</name>
+    <social>
+      <facebook>https://facebook.com</facebook>
+      <twitter>https://twitter.com</twitter>
+      <youtube>https://youtube.com</youtube>
+    </social>
+  </user>
+</users>
