@@ -97,57 +97,61 @@ func main() {
 	scanner = bufio.NewScanner(os.Stdin)
 
 	beginning := storyNode{
-		text: `		Apareciste en una habitacion con la unica luz siendo una leve llama de una vela. 
-		Cada lado de la habitacion tiene una puerta negra que no tenes ni idea a donde va.
-		La puerta en frente tuyo esta totalmente nueva y sin usarse. Si la abris un poco te encontras con total oscuridad.
-		No te da buenas sensaciones.
-		La puerta a tu derecha esta un poco mas usada que la otra y ves que te lleva a una escalera que va para arriba.
-		Parece una buena opcion salvo que no sabes que puede haber arriba.
-		A la izquierda tenes la puerta en peor estado de todas. Si las otras parecian puertas pentagono esta es la tipica puerta de madera
-		que se cae a pedazos. A tener en cuenta que esto puede significar que es la puerta que mas se usa. O NO.`}
+		text: `You wake up to find yourself you are in a dark room and the only light you see
+			  is a small lit candle. The room has 3 doors. One in front of you next to the candle,
+			  one to the right and one to the left. Which door you wanna go in? `,
+	}
 
-	darkRoom := storyNode{text: "Totalmente oscura, no podes ni verte la palma de la mano"}
-
-	/*Don't limit yourself to only transition in a graph from one room to another. It may be the same room
-	but in another state or something different entirely. */
+	darkRoom := storyNode{
+		text: `You enter the door in front of you and the next room is completely dark.
+	You need to do something about it.`,
+	}
 
 	darkRoomLit := storyNode{
-		text: `La habitacion ahora esta iluminada con la vela que te choreaste de la primera habitacion.
-	Podes seguir adelante o dar de baja todo, ser un cagon y volver pa atras.`,
+		text: `The room is now barely illuminated with the candle you grabbed from the first room.
+		You now see there is a door in front of you. You can also go back to the first room.`,
 	}
 
 	forwardTroll := storyNode{
-		text: `Y seguiste para adelante como un boludo y te comio un troll de la nada. 
-		Por que seguirias adelante y no volverias para atras no lo sabe ni Dios. Y si querias volver para atras tambien te comio un troll por tibio.`}
+		text: `You continued going forward and a troll eat you. Nothing you could do really.
+		This game was mostly made for you to lose.`,
+	}
 
 	behindTroll := storyNode{
-		text: "Te comio el troll por ser un tibio que queres que te diga. Hubieras seguido para adelante."}
+		text: `You went back thinking everything would be fine but everything was really not fine.
+		You got eaten by a troll. This game doesn't really want you to win`,
+	}
 
 	trap := storyNode{
-		text: `Fuiste por la puerta mas destruida del mundo porque te comiste el bait de que estaba usada por alguna buena razon. 
-		Bueno caiste en un trap pedazo de gil. Este juego no perdona.`}
+		text: `You went to the door on the left and fell into a trap.
+		Of course a troll was waiting for you
+		and ate you. I really am sorry.`,
+	}
 
-	chest := storyNode{
-		text: `Fuiste por la puerta de la derecha y te llevo por sorpresa. 
-		Llegaste a una habitacion con mas oro y joyerias que joyeria ricciardi y como son de tu confianza te agarraste todo.`}
+	chestTrap := storyNode{
+		text: `You happen to go to the only room that makes you win. You go to the room on your right
+		and you find a chest that you think is full of gold.
+		Well jokes on you, there is a troll in the chest
+		It eats you. THERE IS NO WAY TO WIN.`,
+	}
 
-	beginning.addDecision("W", "Ir para Adelante", &darkRoom)
-	beginning.addDecision("D", "Ir a a la Derecha", &chest)
-	beginning.addDecision("A", "Ir a la Izquierda", &trap)
+	beginning.addDecision("W", "Go Forward", &darkRoom)
+	beginning.addDecision("D", "Go Right", &chestTrap)
+	beginning.addDecision("A", "Go Left", &trap)
 
-	darkRoom.addDecision("I", "Iluminar la habitacion con la vela choreada", &darkRoomLit)
-	darkRoom.addDecision("S", "Volver al beginning", &beginning)
+	darkRoom.addDecision("I", "Brighten the room with the candle from the first room", &darkRoomLit)
+	darkRoom.addDecision("S", "Go Back", &beginning)
 
 	darkRoomLit.addDecision(
 		"W",
-		"Seguir para adelante porque tenes mas huevos que Marcos Rojo en el gol a Nigeria",
+		"Keep going forward because nothing is going to stop you, not even a troll",
 		&forwardTroll,
 	)
-	darkRoomLit.addDecision("S", "Volver para atras porque te comiste los mocos", &behindTroll)
+	darkRoomLit.addDecision("S", "Go back", &behindTroll)
 
 	beginning.play()
 
 	fmt.Println()
-	fmt.Println("Termino bro")
+	fmt.Println("The End.")
 
 }
